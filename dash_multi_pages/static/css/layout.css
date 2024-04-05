@@ -1,0 +1,269 @@
+#page-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+}
+
+#left-main {
+  align-items: flex-start;
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  gap: var(--spacing-06);
+  overflow: auto;
+  padding: 32px 32px 0;
+  width: 352px;
+}
+
+#left-side {
+  background-color: var(--surfaces-bg-02);
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+#right-side {
+  background: var(--main-container-bg-color);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-04);
+  padding: 32px;
+  width: 100%;
+}
+
+#right-header {
+  align-items: baseline;
+  display: flex;
+  flex-direction: row;
+  height: 32px;
+  justify-content: space-between;
+}
+
+#page-header {
+  align-items: center;
+  background-color: var(--surfaces-bg-02);
+  display: flex;
+  flex-direction: row;
+  height: 64px;
+  justify-content: space-between;
+  min-height: 0;
+  padding: 0 32px;
+  width: 100%;
+}
+
+#page-header:not(:empty) {
+  border-bottom: 1px solid var(--border-subtle-alpha-01);
+}
+
+#page-components {
+  overflow: auto;
+  padding-top: var(--spacing-02);
+}
+
+.grid-layout {
+  display: grid;
+  height: 100%;
+  width: 100%;
+}
+
+#nav-panel {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+#nav-panel:not(:empty) {
+  border-bottom: 1px solid var(--border-subtle-alpha-01);
+}
+
+#control-panel {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-06);
+  padding-bottom: var(--spacing-06);
+  padding-top: var(--spacing-02);
+}
+
+#control-panel:not(:empty) {
+  border-bottom: 1px solid var(--border-subtle-alpha-01);
+}
+
+.page_error_container {
+  align-items: center;
+  background: var(--surfaces-bg-03);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 64px;
+  width: 100vw;
+}
+
+.error_content_container {
+  align-items: center;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: -32px;
+}
+
+.error_text_container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: center;
+  width: 336px;
+}
+
+.dashboard_title {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+#nav-bar {
+  align-items: center;
+  background: inherit !important;
+  display: inline-flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+.nav-bar-icon-link {
+  align-items: center;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  display: flex;
+  height: 80px;
+  justify-content: center;
+  width: 100%;
+}
+
+.nav-bar-icon-link.active .material-symbols-outlined {
+  color: var(--text-active);
+}
+
+.loading-container {
+  height: 100%;
+  width: 100%;
+}
+
+#left-sidebar {
+  border-right: 1px solid var(--border-subtle-alpha-01);
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding-top: 10px;
+  width: 80px;
+}
+
+#page-container div[hidden] {
+  display: none;
+}
+
+#page-main {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: row;
+  height: calc(100vh - 64px);
+  overflow: auto;
+}
+
+#dashboard-title {
+  margin: 0;
+}
+
+#logo {
+  height: 100%;
+}
+
+#logo-and-title {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  height: 100%;
+}
+
+#collapse-icon.material-symbols-outlined {
+  background-color: var(--tooltip-bg-color);
+  border-radius: 50%;
+  color: var(--text-disabled);
+  cursor: pointer;
+  position: absolute;
+}
+
+#collapse-icon.material-symbols-outlined:hover {
+  color: var(--text-active);
+}
+
+.collapse-button-tooltip {
+  height: 24px;
+  left: -12px;
+  position: relative;
+  top: 36px;
+}
+
+.collapse-icon-div {
+  display: flex;
+  justify-content: center;
+  padding-top: 36px;
+  width: 0;
+}
+
+/* Note: This is only meant as a quick-fix to improve some of the mobile layouts. */
+
+/* Long-term wise this should be replaced by refactoring our CSS code and components to be mobile-compatible. */
+
+/* Applies to device size x-small and small */
+@media (width <= 576px) {
+  .grid-layout {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+  }
+
+  .collapse-button-tooltip {
+    top: 28px;
+  }
+
+  .collapse-icon-div {
+    padding-top: 28px;
+  }
+
+  #page-header {
+    zoom: 80%;
+  }
+
+  #left-side {
+    zoom: 80%;
+  }
+
+  #right-side {
+    zoom: 80%;
+  }
+}
+
+@media (height <= 576px) {
+  .collapse-button-tooltip {
+    top: 28px;
+  }
+
+  .collapse-icon-div {
+    padding-top: 28px;
+  }
+
+  #page-header {
+    zoom: 80%;
+  }
+
+  #left-side {
+    zoom: 80%;
+  }
+
+  #right-side {
+    zoom: 80%;
+  }
+}
