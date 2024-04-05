@@ -25,7 +25,8 @@ from .types import ComponentType #, ControlType
 # (e.g. html.Div) as well as TypedDict, but that's not possible, and Dash does not have typing support anyway. When
 # this type is used, the object is actually still a dash.development.base_component.Component, but this makes it easier
 # to see what contract the component fulfills by making the expected keys explicit.
-_PageBuildType = TypedDict("_PageBuildType", {"control-panel": html.Div, "page-components": html.Div})
+# _PageBuildType = TypedDict("_PageBuildType", {"control-panel": html.Div, "page-components": html.Div})
+_PageBuildType = TypedDict("_PageBuildType", {"page-components": html.Div})
 
 
 class Page(MultiPagesBaseModel):
@@ -89,30 +90,30 @@ class Page(MultiPagesBaseModel):
                 f"as the page title. If you have multiple pages with the same title then you must assign a unique id."
             ) from exc
 
-    # @_log_call
-    # def pre_build(self):
-    #     # TODO: Remove default on page load action if possible
-    #     targets = model_manager._get_page_model_ids_with_figure(page_id=ModelID(str(self.id)))
-    #     if targets:
-    #         self.actions = [
-    #             ActionsChain(
-    #                 id=f"{ON_PAGE_LOAD_ACTION_PREFIX}_{self.id}",
-    #                 trigger=Trigger(
-    #                     component_id=f"{ON_PAGE_LOAD_ACTION_PREFIX}_trigger_{self.id}", component_property="data"
-    #                 ),
-    #                 actions=[
-    #                     Action(
-    #                         id=f"{ON_PAGE_LOAD_ACTION_PREFIX}_action_{self.id}", function=_on_page_load(targets=targets)
-    #                     )
-    #                 ],
-    #             )
-    #         ]
+    @_log_call
+    def pre_build(self):
+        # TODO: Remove default on page load action if possible
+        targets = model_manager._get_page_model_ids_with_figure(page_id=ModelID(str(self.id)))
+        # if targets:
+        #     self.actions = [
+        #         ActionsChain(
+        #             id=f"{ON_PAGE_LOAD_ACTION_PREFIX}_{self.id}",
+        #             trigger=Trigger(
+        #                 component_id=f"{ON_PAGE_LOAD_ACTION_PREFIX}_trigger_{self.id}", component_property="data"
+        #             ),
+        #             actions=[
+        #                 Action(
+        #                     id=f"{ON_PAGE_LOAD_ACTION_PREFIX}_action_{self.id}", function=_on_page_load(targets=targets)
+        #                 )
+        #             ],
+        #         )
+        #     ]
 
     @_log_call
     def build(self) -> _PageBuildType:
         self._update_graph_theme()
-        controls_content = [control.build() for control in self.controls]
-        control_panel = html.Div(children=controls_content, id="control-panel", hidden=not controls_content)
+        # controls_content = [control.build() for control in self.controls]
+        # control_panel = html.Div(children=controls_content, id="control-panel", hidden=not controls_content)
 
         components_container = self.layout.build()
         for component_idx, component in enumerate(self.components):
@@ -121,7 +122,8 @@ class Page(MultiPagesBaseModel):
         # Page specific CSS ID and Stores
         components_container.children.append(dcc.Store(id=f"{ON_PAGE_LOAD_ACTION_PREFIX}_trigger_{self.id}"))
         components_container.id = "page-components"
-        return html.Div([control_panel, components_container], id=self.id)
+        # return html.Div([control_panel, components_container], id=self.id)
+        return html.Div(components_container, id=self.id)
 
     def _update_graph_theme(self):
         # The obvious way to do this would be to alter pio.templates.default, but this changes global state and so is
