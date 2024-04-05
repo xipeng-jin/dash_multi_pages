@@ -8,11 +8,6 @@ import inspect
 from datetime import date
 from typing import Any, Dict, List, Literal, Protocol, Union, runtime_checkable
 
-# try:
-#     from pydantic.v1 import Field, StrictBool
-#     from pydantic.v1.fields import ModelField
-#     from pydantic.v1.schema import SkipField
-# except ImportError:  # pragma: no cov
 from pydantic import Field, StrictBool
 from pydantic.fields import ModelField
 from pydantic.schema import SkipField
@@ -379,11 +374,11 @@ ComponentType = Annotated[
 [`Button`][vizro.models.Button], [`Card`][vizro.models.Card], [`Table`][vizro.models.Table],
 [`Graph`][vizro.models.Graph] or [`AgGrid`][vizro.models.AgGrid]."""
 
-# NavPagesType = Union[List[str], Dict[str, List[str]]]
-# "List of page IDs or a mapping from name of a group to a list of page IDs (for hierarchical sub-navigation)."
+NavPagesType = Union[List[str], Dict[str, List[str]]]
+"List of page IDs or a mapping from name of a group to a list of page IDs (for hierarchical sub-navigation)."
 
-# NavSelectorType = Annotated[
-#     Union["Accordion", "NavBar"], Field(discriminator="type", description="Component for rendering navigation.")
-# ]
+NavSelectorType = Annotated[
+    Union["Accordion", "NavBar"], Field(discriminator="type", description="Component for rendering navigation.")
+]
 """Discriminated union. Type of component for rendering navigation:
 [`Accordion`][vizro.models.Accordion] or [`NavBar`][vizro.models.NavBar]."""
