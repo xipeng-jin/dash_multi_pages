@@ -106,3 +106,4 @@ class MultiPagesBaseModel(BaseModel):
             True  # Run validators when a field is assigned after model instantiation.
         )
         copy_on_model_validation = "none"  # Don't copy sub-models. Essential for the model_manager to work correctly.
+        arbitrary_types_allowed = True  # Allow arbitrary types to be passed to fields.
