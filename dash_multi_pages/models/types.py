@@ -364,7 +364,7 @@ OptionsType = Union[List[StrictBool], List[float], List[str], List[date], List[O
 
 ComponentType = Annotated[
     # Union["AgGrid", "Button", "Card", "Container", "Graph", "Table", "Tabs"],
-    Union["Button", "Card"],
+    Union["Button", "Card", "Graph"],
     Field(
         discriminator="type",
         description="Component that makes up part of the layout on the page.",

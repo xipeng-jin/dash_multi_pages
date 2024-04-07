@@ -2,7 +2,7 @@
 from ._base import MultiPagesBaseModel
 # from ._action import Action
 from ._components import Button
-from ._components import Card
+from ._components import Card, Graph
 # from ._components import Card, Container, Graph, Table, Tabs
 # from ._components import AgGrid
 # from ._components.form import Button, Checklist, DatePicker, Dropdown, RadioItems, RangeSlider, Slider
@@ -26,7 +26,7 @@ Page.update_forward_refs(
     Card=Card,
     # Container=Container,
     # Filter=Filter,
-    # Graph=Graph,
+    Graph=Graph,
     # Parameter=Parameter,
     # Table=Table,
     # Tabs=Tabs,
@@ -48,7 +48,7 @@ __all__ = [
     # "DatePicker",
     # "Dropdown",
     # "Filter",
-    # "Graph",
+    "Graph",
     "Layout",
     "NavBar",
     "NavLink",

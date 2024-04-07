@@ -4,9 +4,9 @@
 from dash_multi_pages.models._components.button import Button
 from dash_multi_pages.models._components.card import Card
 # from dash_multi_pages.models._components.container import Container
-# from dash_multi_pages.models._components.graph import Graph
+from dash_multi_pages.models._components.graph import Graph
 # from dash_multi_pages.models._components.table import Table
 # from dash_multi_pages.models._components.tabs import Tabs
 
 # __all__ = ["AgGrid", "Button", "Card", "Container", "Graph", "Table", "Tabs"]
-__all__ = ["Button", "Card"]
+__all__ = ["Button", "Card", "Graph"]
